@@ -34,8 +34,8 @@ Our routes are listed in the table below:
 |-----|--------|--------|
 | /amiibo | get | displays all amiibos (index)|
 | /amiibo/new | get | displays a form to make a new amiibo (new)|
-| /bookmark/ | post | add a new amiibo to database (create)|
-| /bookmark/:id | get | show info about a specific amiibo (show)|
-| /bookmark/:id/edit | get | show edit form for an amiibo (edit)|
-| /bookmark/:id | put | update an amiibo's data then redirects (update)|
-| /bookmark/:id | delete | destroys an amiibos's data then redirects (destroy)|
+| /amiibo/ | post | add a new amiibo to database (create)|
+| /amiibo/:id | get | show info about a specific amiibo (show)|
+| /amiibo/:id/edit | get | show edit form for an amiibo (edit)|
+| /amiibo/:id | put | update an amiibo's data then redirects (update)|
+| /amiibo/:id | delete | destroys an amiibos's data then redirects (destroy)|
