@@ -1,4 +1,5 @@
-# Back-End 
+# Group Project (Amiibo App) Back-End - Rob Bock, Jeff Li, Seb Patin
+
 
 ## API
 
@@ -14,7 +15,7 @@ https://www.amiiboapi.com/api/
 
 ## Models
 
-Below is the model for the bookmark schema:
+Below is the model for the amiibo schema:
 
 amiiboSchema = {
             amiiboSeries: String,
