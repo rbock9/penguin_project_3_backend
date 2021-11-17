@@ -71,6 +71,8 @@ app.get("/", (req, res) => {
 });
 
 // SEED ROUTE - THIS WILL RESET DATABASE WITH SEED DATA
+// THIS WILL DELETE ANY OF YOUR ADDITIONAL AMIIBOS!!!!!
+// YOU'VE BEEN WARNED!!!!!!!!!!!!!FDAFDSFFEAWFJEKLASL;FJ
 app.get("/amiibos/seed", (req, res) => {
   Amiibos.deleteMany({})
   .then((data) => {
