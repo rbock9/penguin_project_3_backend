@@ -2,7 +2,8 @@
 
 ## API
 
-https://www.amiiboapi.com/api/
+Amiibo Data taken from https://www.amiiboapi.com/api/
+./models/amiibos.js is where the amiibo data is stored for seeding.
 
 ## Dependencies
 
@@ -14,16 +15,24 @@ https://www.amiiboapi.com/api/
 
 ## Models
 
-Below is the model for the bookmark schema:
+const AmiibosSchema = new mongoose.Schema({
 
-amiiboSchema = {
-            amiiboSeries: String,
-            character: String,
-            gameSeries: String,
-            image: String,
-            name: String,
-            type: String,
-            misc: String
+  amiiboSeries: String,
+  character: String,
+  gameSeries: String,
+  head: String,
+  image: String,
+  name: String,
+  release: {
+    au: String,
+    eu: String,
+    jp: String,
+    na: String
+  },
+  tail: String,
+  type: String
+  
+
 }
 
 ## Backend Route Table
@@ -32,10 +41,10 @@ Our routes are listed in the table below:
 
 | url | method | action |
 |-----|--------|--------|
-| /amiibo | get | displays all amiibos (index)|
-| /amiibo/new | get | displays a form to make a new amiibo (new)|
-| /amiibo/ | post | add a new amiibo to database (create)|
-| /amiibo/:id | get | show info about a specific amiibo (show)|
-| /amiibo/:id/edit | get | show edit form for an amiibo (edit)|
-| /amiibo/:id | put | update an amiibo's data then redirects (update)|
-| /amiibo/:id | delete | destroys an amiibos's data then redirects (destroy)|
+| /amiibos | get | displays all amiibos (index)|
+| /amiibos/new | get | displays a form to make a new amiibo (new)|
+| /amiibos/ | post | add a new amiibo to database (create)|
+| /amiibos/:id | get | show info about a specific amiibo (show)|
+| /amiibos/:id/edit | get | show edit form for an amiibo (edit)|
+| /amiibos/:id | put | update an amiibo's data then redirects (update)|
+| /amiibos/:id | delete | destroys an amiibos's data then redirects (destroy)|
