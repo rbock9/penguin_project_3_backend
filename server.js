@@ -48,7 +48,9 @@ const AmiibosSchema = new mongoose.Schema({
     na: String
   },
   tail: String,
-  type: String
+  type: String,
+  isWished: Boolean,
+  isOwned: Boolean
   
 
 },{timestamps: true})
