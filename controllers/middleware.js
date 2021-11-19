@@ -1,5 +1,19 @@
 require("dotenv").config(); // loading env variables
 const jwt = require("jsonwebtoken");
+const User = require("../models/User");
+const Amiibo = require("../models/Amiibo");
+
+// CREATE CONTEXT MIDDLEWARE
+const createContext = (req, res, next) => {
+  // put any data you want in the object below to be accessible to all routes
+  req.context = {
+    models: {
+      User,
+      Amiibo,
+    },
+  };
+  next();
+};
 
 // MIDDLEWARE FOR AUTHORIZATION (MAKING SURE THEY ARE LOGGED IN)
 const isLoggedIn = async (req, res, next) => {
@@ -31,4 +45,5 @@ const isLoggedIn = async (req, res, next) => {
 // export custom middleware
 module.exports = {
   isLoggedIn,
+  createContext
 };
