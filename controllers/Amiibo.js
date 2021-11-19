@@ -33,7 +33,6 @@ router.get("/:id", isLoggedIn, async (req, res) => {
 // create Route with isLoggedIn middleware
 router.post("/", isLoggedIn, async (req, res) => {
   const { username } = req.user; // get username from req.user property created by isLoggedIn middleware
-  console.log("hi sal")
   req.body.username = username; // add username property to req.body
   //create new Amiibo and send it in response
   res.json(
