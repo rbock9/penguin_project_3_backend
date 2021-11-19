@@ -23,7 +23,8 @@ const morgan = require("morgan")
 const UserRouter = require("./controllers/User")
 // imports Amiibo route from controllers folder
 const AmiiboRouter = require("./controllers/Amiibo")
-
+// connecting the Context middleware
+const {createContext} = require("./controllers/middleware")
 
 
 /////////////////////////////////
@@ -71,7 +72,7 @@ app.use(cors({credentials: true, origin: "*"})) // prevent cors errors, opens up
 app.use(morgan("tiny")) // loggging
 app.use(express.json()) // parse json bodies
 // {credentials: true, origin: "http"}
-
+app.use(createContext) // create req.context
 
 ///////////////////////////////
 // ROUTES
