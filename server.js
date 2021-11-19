@@ -8,7 +8,7 @@ const { PORT = 3000, DATABASE_URL } = process.env
 // import express
 const express = require("express")
 //import mercedloggers log function
-const {log} =require("mercedlogger")
+const { log } = require("mercedlogger")
 // create application object
 const app = express()
 const allAmiibos = require('./models/allAmiibos.js')
@@ -60,17 +60,17 @@ const AmiiboRouter = require("./controllers/Amiibo")
 //   type: String,
 //   isWished: Boolean,
 //   isOwned: Boolean
-  
+
 
 // },{timestamps: true})
 
 // const Amiibos = mongoose.model("Amiibos", AmiibosSchema)
 
 //MIDDLEWARE
-app.use(cors()) // prevent cors errors, opens up access for frontend
+app.use(cors({credentials: true, origin: "*"})) // prevent cors errors, opens up access for frontend
 app.use(morgan("tiny")) // loggging
 app.use(express.json()) // parse json bodies
-
+// {credentials: true, origin: "http"}
 
 
 ///////////////////////////////
@@ -83,7 +83,7 @@ app.get("/", (req, res) => {
 
 // UserRouter middleware
 // send all "/user" requests to UserRouter for routing
-app.use("/user", UserRouter) 
+app.use("/user", UserRouter)
 // AmiiboRouter middleware
 app.use("/amiibos", AmiiboRouter)
 
@@ -92,12 +92,12 @@ app.use("/amiibos", AmiiboRouter)
 // YOU'VE BEEN WARNED!!!!!!!!!!!!!FDAFDSFFEAWFJEKLASL;FJ
 app.get("/amiibos/seed", (req, res) => {
   Amiibos.deleteMany({})
-  .then((data) => {
-    Amiibo.create(allAmiibos)
     .then((data) => {
-      res.json(data)
+      Amiibo.create(allAmiibos)
+        .then((data) => {
+          res.json(data)
+        })
     })
-  })
 })
 
 // INDEX  //

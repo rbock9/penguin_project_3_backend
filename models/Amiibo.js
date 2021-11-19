@@ -5,16 +5,16 @@ const AmiiboSchema = new Schema({
     amiiboSeries: String,
     character: String,
     gameSeries: String,
-    head: String,
+    // head: String,
     image: String,
     name: String,
-    release: {
-      au: String,
-      eu: String,
-      jp: String,
-      na: String
-    },
-    tail: String,
+    // release: {
+    //   au: String,
+    //   eu: String,
+    //   jp: String,
+    //   na: String
+    // },
+    // tail: String,
     type: String,
     isWished: Boolean,
     isOwned: Boolean

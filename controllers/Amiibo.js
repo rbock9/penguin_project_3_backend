@@ -1,5 +1,5 @@
 const { Router } = require("express"); // import Router from express
-const Amiibo = require("../models/Amiibo"); // import Todo model
+const Amiibo = require("../models/Amiibo"); // import Amiibo model
 const { isLoggedIn } = require("./middleware"); // import isLoggedIn custom middleware
 
 const router = Router();
@@ -10,7 +10,7 @@ const router = Router();
 // Index Route with isLoggedIn middleware
 router.get("/", isLoggedIn, async (req, res) => {
   const { username } = req.user; // get username from req.user property created by isLoggedIn middleware
-  //send all todos with that user
+  //send all Amiibos with that user
   res.json(
     await Amiibo.find({ username }).catch((error) =>
       res.status(400).json({ error })
@@ -22,7 +22,7 @@ router.get("/", isLoggedIn, async (req, res) => {
 router.get("/:id", isLoggedIn, async (req, res) => {
   const { username } = req.user; // get username from req.user property created by isLoggedIn middleware
   const _id = req.params.id; // get id from params
-  //send target todo
+  //send target Amiibo
   res.json(
     await Amiibo.findOne({ username, _id }).catch((error) =>
       res.status(400).json({ error })
@@ -33,8 +33,9 @@ router.get("/:id", isLoggedIn, async (req, res) => {
 // create Route with isLoggedIn middleware
 router.post("/", isLoggedIn, async (req, res) => {
   const { username } = req.user; // get username from req.user property created by isLoggedIn middleware
+  console.log("hi sal")
   req.body.username = username; // add username property to req.body
-  //create new todo and send it in response
+  //create new Amiibo and send it in response
   res.json(
     await Amiibo.create(req.body).catch((error) =>
       res.status(400).json({ error })
@@ -47,7 +48,7 @@ router.put("/:id", isLoggedIn, async (req, res) => {
   const { username } = req.user; // get username from req.user property created by isLoggedIn middleware
   req.body.username = username; // add username property to req.body
   const _id = req.params.id;
-  //update todo with same id if belongs to logged in User
+  //update Amiibo with same id if belongs to logged in User
   res.json(
     await Amiibo.updateOne({ username, _id }, req.body, { new: true }).catch(
       (error) => res.status(400).json({ error })
@@ -59,7 +60,7 @@ router.put("/:id", isLoggedIn, async (req, res) => {
 router.delete("/:id", isLoggedIn, async (req, res) => {
   const { username } = req.user; // get username from req.user property created by isLoggedIn middleware
   const _id = req.params.id;
-  //remove todo with same id if belongs to logged in User
+  //remove Amiibo with same id if belongs to logged in User
   res.json(
     await Amiibo.remove({ username, _id }).catch((error) =>
       res.status(400).json({ error })
