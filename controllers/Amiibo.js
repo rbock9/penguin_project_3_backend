@@ -1,5 +1,5 @@
 const { Router } = require("express"); // import Router from express
-const Amiibo = require("../models/Amiibo"); // import Amiibo model
+// const Amiibo = require("../models/Amiibo"); // import Amiibo model
 const { isLoggedIn } = require("./middleware"); // import isLoggedIn custom middleware
 
 const router = Router();
@@ -9,6 +9,7 @@ const router = Router();
 
 // Index Route with isLoggedIn middleware
 router.get("/", isLoggedIn, async (req, res) => {
+  const { Amiibo } = req.context.models;
   const { username } = req.user; // get username from req.user property created by isLoggedIn middleware
   //send all Amiibos with that user
   res.json(
@@ -20,6 +21,7 @@ router.get("/", isLoggedIn, async (req, res) => {
 
 // Show Route with isLoggedIn middleware
 router.get("/:id", isLoggedIn, async (req, res) => {
+  const { Amiibo } = req.context.models;
   const { username } = req.user; // get username from req.user property created by isLoggedIn middleware
   const _id = req.params.id; // get id from params
   //send target Amiibo
@@ -32,6 +34,7 @@ router.get("/:id", isLoggedIn, async (req, res) => {
 
 // create Route with isLoggedIn middleware
 router.post("/", isLoggedIn, async (req, res) => {
+  const { Amiibo } = req.context.models;
   const { username } = req.user; // get username from req.user property created by isLoggedIn middleware
   req.body.username = username; // add username property to req.body
   //create new Amiibo and send it in response
@@ -44,6 +47,7 @@ router.post("/", isLoggedIn, async (req, res) => {
 
 // update Route with isLoggedIn middleware
 router.put("/:id", isLoggedIn, async (req, res) => {
+  const { Amiibo } = req.context.models;
   const { username } = req.user; // get username from req.user property created by isLoggedIn middleware
   req.body.username = username; // add username property to req.body
   const _id = req.params.id;
@@ -55,8 +59,9 @@ router.put("/:id", isLoggedIn, async (req, res) => {
   );
 });
 
-// update Route with isLoggedIn middleware
+// delete Route with isLoggedIn middleware
 router.delete("/:id", isLoggedIn, async (req, res) => {
+  const { Amiibo } = req.context.models;
   const { username } = req.user; // get username from req.user property created by isLoggedIn middleware
   const _id = req.params.id;
   //remove Amiibo with same id if belongs to logged in User
