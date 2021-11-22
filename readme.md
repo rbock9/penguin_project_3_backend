@@ -30,11 +30,11 @@ const AmiibosSchema = new mongoose.Schema({
 
 
 }
-
+```
 ## Backend Route Table
 
 Our routes are listed in the table below:
-
+```
 | url | method | action |
 |-----|--------|--------|
 | / | get | test route |
