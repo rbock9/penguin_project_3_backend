@@ -26,15 +26,12 @@ const AmiibosSchema = new mongoose.Schema({
   name: String,
   type: String,
 
-
-
-
 }
 ```
 ## Backend Route Table
 
 Our routes are listed in the table below:
-```
+
 | url | method | action |
 |-----|--------|--------|
 | / | get | test route |
@@ -44,4 +41,4 @@ Our routes are listed in the table below:
 | /amiibos/:id | delete | destroys an amiibos's data then redirects (destroy)|
 
 
-```
+
