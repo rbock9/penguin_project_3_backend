@@ -3,7 +3,7 @@
 ## API
 
 Amiibo Data taken from https://www.amiiboapi.com/api/
-./models/amiibos.js is where the amiibo data is stored for seeding.
+
 
 ## Dependencies
 
@@ -14,24 +14,15 @@ Amiibo Data taken from https://www.amiiboapi.com/api/
 - morgan
 
 ## Models
-
+```
 const AmiibosSchema = new mongoose.Schema({
 
   amiiboSeries: String,
   character: String,
   gameSeries: String,
-  head: String,
   image: String,
   name: String,
-  release: {
-    au: String,
-    eu: String,
-    jp: String,
-    na: String
-  },
-  tail: String,
-  type: String
-  
+  type: String,
 
 }
 
@@ -41,10 +32,10 @@ Our routes are listed in the table below:
 
 | url | method | action |
 |-----|--------|--------|
+| / | get | test route |
 | /amiibos | get | displays all amiibos (index)|
-| /amiibos/new | get | displays a form to make a new amiibo (new)|
-| /amiibos/ | post | add a new amiibo to database (create)|
-| /amiibos/:id | get | show info about a specific amiibo (show)|
-| /amiibos/:id/edit | get | show edit form for an amiibo (edit)|
+| /amiibos | post | add a new amiibo to database (create)|
 | /amiibos/:id | put | update an amiibo's data then redirects (update)|
 | /amiibos/:id | delete | destroys an amiibos's data then redirects (destroy)|
+
+```
