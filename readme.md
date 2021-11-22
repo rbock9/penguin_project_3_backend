@@ -1,4 +1,5 @@
-# Back-End 
+# Group Project (Amiibo App) Back-End - Rob Bock, Jeff Li, Seb Patin
+
 
 ## API
 
@@ -14,6 +15,7 @@ Amiibo Data taken from https://www.amiiboapi.com/api/
 - morgan
 
 ## Models
+
 ```
 const AmiibosSchema = new mongoose.Schema({
 
@@ -23,6 +25,9 @@ const AmiibosSchema = new mongoose.Schema({
   image: String,
   name: String,
   type: String,
+
+
+
 
 }
 ```
@@ -37,5 +42,6 @@ Our routes are listed in the table below:
 | /amiibos | post | add a new amiibo to database (create)|
 | /amiibos/:id | put | update an amiibo's data then redirects (update)|
 | /amiibos/:id | delete | destroys an amiibos's data then redirects (destroy)|
+
 
 ```
